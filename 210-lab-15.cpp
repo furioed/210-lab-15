@@ -1,6 +1,6 @@
 // COMSC-210 | Lab 15 | Mamadou Sissoko
 // IDE used: Visual Studio Code
-// Description: Movie class with private members, setters, getters, reading movies into a fixed-size array, and printing them
+// Description: Movie class with private members, setters, getters, constructor, reading movies into a fixed-size array, and printing them
 
 #include <iostream>
 #include <fstream>
@@ -16,6 +16,13 @@ private:
     string screenWriter; // Name of the screenwriter
 
 public:
+    // Constructor to initialize a Movie object
+    Movie(const string& t = "", int y = 0, const string& sw = "") {
+        title = t;
+        yearReleased = y;
+        screenWriter = sw;
+    }
+
     // Setter methods
     void setTitle(const string& t) { title = t; }
     void setYearReleased(int y) { yearReleased = y; }
@@ -46,17 +53,15 @@ int main() {
     string title, screenWriter;
     int year;
 
-    // Read exactly 4 movies from the file
+    // Read exactly 4 movies from the file and initialize using constructor
     for (int i = 0; i < 4; i++) {
         getline(inputFile, title);
         inputFile >> year;
         inputFile.ignore(); // Ignore the leftover newline
         getline(inputFile, screenWriter);
 
-        // Set movie data using setters
-        movies[i].setTitle(title);
-        movies[i].setYearReleased(year);
-        movies[i].setScreenWriter(screenWriter);
+        // Initialize Movie object using constructor
+        movies[i] = Movie(title, year, screenWriter);
     }
 
     inputFile.close();  // Close the input file
