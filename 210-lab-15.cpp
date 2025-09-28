@@ -1,6 +1,6 @@
 // COMSC-210 | Lab 15 | Mamadou Sissoko
 // IDE used: Visual Studio Code
-// Description: Movie class with private members, setters, reading movies into a fixed-size array, and printing them
+// Description: Movie class with private members, setters, getters, reading movies into a fixed-size array, and printing them
 
 #include <iostream>
 #include <fstream>
@@ -21,11 +21,16 @@ public:
     void setYearReleased(int y) { yearReleased = y; }
     void setScreenWriter(const string& sw) { screenWriter = sw; }
 
-    // Print method to display movie information
+    // Getter methods
+    string getTitle() const { return title; }
+    int getYearReleased() const { return yearReleased; }
+    string getScreenWriter() const { return screenWriter; }
+
+    // Print method to display movie information using getters
     void print() const {
-        cout << "Movie: " << title << endl;
-        cout << "    Year released: " << yearReleased << endl;
-        cout << "    Screenwriter: " << screenWriter << endl << endl;
+        cout << "Movie: " << getTitle() << endl;
+        cout << "    Year released: " << getYearReleased() << endl;
+        cout << "    Screenwriter: " << getScreenWriter() << endl << endl;
     }
 };
 
